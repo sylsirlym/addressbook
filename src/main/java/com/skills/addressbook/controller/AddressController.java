@@ -30,4 +30,9 @@ public class AddressController {
     public List<Contact> getAllContacts(){
         return new ArrayList<>(contacts.values());
     }
+
+    @GetMapping("/{id}")
+    public Contact getContact(@PathVariable String id){
+        return contacts.get(id);
+    }
 }
