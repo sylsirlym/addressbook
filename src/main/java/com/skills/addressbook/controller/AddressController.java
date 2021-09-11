@@ -1,11 +1,10 @@
 package com.skills.addressbook.controller;
 
 import com.skills.addressbook.dto.Contact;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
@@ -25,5 +24,10 @@ public class AddressController {
     public Contact addContact(@RequestBody Contact contact){
         contacts.put(contact.getId(), contact);
         return contact;
+    }
+
+    @GetMapping("/")
+    public List<Contact> getAllContacts(){
+        return new ArrayList<>(contacts.values());
     }
 }
