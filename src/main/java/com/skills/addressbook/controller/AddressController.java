@@ -1,6 +1,7 @@
 package com.skills.addressbook.controller;
 
 import com.skills.addressbook.dto.Contact;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ public class AddressController {
     ConcurrentMap<String, Contact> contacts = new ConcurrentHashMap<>();
 
     @PostMapping("/")
+    @ApiOperation(value = "Add Contact API", notes = "Creates a contact", response = Contact.class)
     public Contact addContact(@RequestBody Contact contact){
         contacts.put(contact.getId(), contact);
         return contact;
