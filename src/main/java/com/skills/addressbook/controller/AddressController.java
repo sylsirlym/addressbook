@@ -29,11 +29,13 @@ public class AddressController {
     }
 
     @GetMapping("/")
+    @ApiOperation(value = "Get Contacts API", notes = "Gets all contact", response = List.class)
     public List<Contact> getAllContacts(){
         return new ArrayList<>(contacts.values());
     }
 
     @GetMapping("/{id}")
+    @ApiOperation(value = "Get a Contact API", notes = "Gets a contact given an API", response = Contact.class)
     public Contact getContact(@PathVariable String id){
         return contacts.get(id);
     }
